@@ -1,0 +1,41 @@
+<div class="h-screen flex flex-col">
+    <header class="bg-lelie-blue fixed w-full top-0 h-10 flex justify-between items-center">
+        <div class="h-2/5 mx-2 flex gap-x-3 items-center">
+            <img src="/assets/images/logo_Lelie.png" class="h-full" />
+            <h1 class="text-white font-light text-sm">VAN DER <span class="font-medium">LELIE</span></h1>
+        </div>
+    </header>
+    <div class="flex w-full flex-1">
+        <div class="h-full fixed top-10 bg-gray-100 border-r flex flex-col"
+        [ngClass]="{'w-52': navCollapsed === false, 'w-12' : navCollapsed === true }" 
+        >
+            <div class="self-end py-4 px-3 mb-2 hover:bg-white cursor-pointer" (click)="navCollapsed = !navCollapsed">
+                <img src="assets/icons/icon-menu.png" class="h-5" />
+            </div>
+    
+            <div class="flex flex-col gap-y-16">
+                <nav *ngFor="let item of navItems" class="w-full">
+                    <h2 *ngIf="item.title !== 'Start' && !navCollapsed" class="px-3 py-1.5 font-bold text-sm">{{item.title}}</h2>
+                    <ul class="w-full">
+                        <li *ngFor="let subItem of item.subNav">
+                            <a class="flex gap-x-3 items-center px-3 py-2 text-sm hover:bg-white" 
+                                [ngClass]="{'bg-white font-medium border-r-2 border-blue-500': currentRoute === subItem.title }" 
+                                [routerLink]="subItem.routerLink">
+                                <img [src]="subItem.icon" class="h-5" />
+                                <h2 *ngIf="!navCollapsed" class="m-0">{{subItem.title}}</h2>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div class="mt-10 ml-20 w-full"
+            [ngClass]="{'ml-52': navCollapsed === false, 'ml-12' : navCollapsed === true }" >
+            <div class="py-3 px-5 border-b-2">
+                <h1 class="text-lg font-bold">{{ currentRoute }}</h1>
+            </div>
+            <ng-content></ng-content>
+        </div>
+    </div>
+</div>
+

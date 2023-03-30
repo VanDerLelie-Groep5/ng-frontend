@@ -1,0 +1,32 @@
+<div class="flex items-center justify-center min-h-screen">
+    <div class="w-full max-w-2xl p-5 flex flex-col items-center gap-y-10">
+        <img src="https://www.vanderlelie.nl/wp-content/uploads/Logo-van-der-Lelie.svg" class="w-full max-w-xs p-5" />
+        <div class="rounded-lg shadow-xs border w-full max-w-lg p-5 flex flex-col items-center">
+
+                <h1 class="text-center text-xl font-regular pb-5">Inloggen</h1>
+                <form [formGroup]="signInForm" (ngSubmit)="onSubmit()" class="w-full p-5 flex flex-col">
+                    <app-text-input 
+                        label="E-mailadres"
+                        placeholder="Voer uw e-mailadres in"
+                        type="text"
+                        [required]="true"
+                        formControlName="emailAddress"
+                        [parentForm]="signInForm"
+                        fieldName="emailAddress"
+                    ></app-text-input>
+                    <app-text-input 
+                        label="password"
+                        placeholder="Voer uw wachtwoord in"
+                        type="password"
+                        [required]="true"
+                        formControlName="password"
+                        [parentForm]="signInForm" 
+                        fieldName="password"
+                    ></app-text-input>
+               
+                    <button type="submit" class="px-14 rounded-md py-1.5 bg-blue-500 text-white mt-10 self-end">Inloggen</button>
+                </form>
+   
+        </div>
+    </div>
+</div>
