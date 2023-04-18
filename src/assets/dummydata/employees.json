@@ -1,0 +1,57 @@
+[
+    {
+        "id": "1",
+        "employeeNumber": "23IWBDU0283B",
+        "firstName": "Ilias",
+        "lastName": "Boujibar",
+        "emailAddress": "iliasbouji@gmail.com",
+        "phoneNumber": "0619989285",
+        "gender": "M",
+        "unitsPerHour": 3.00,
+        "preferenceDepartmentId": 2
+    },
+    {
+        "id": "2",
+        "employeeNumber": "9873HDSUIDB43",
+        "firstName": "Peter",
+        "lastName": "Harteveld",
+        "emailAddress": "peterharteveld@gmail.com",
+        "phoneNumber": "0647384728",
+        "gender": "M",
+        "unitsPerHour": 2.50,
+        "preferenceDepartmentId": 3
+    },
+    {
+        "id": "3",
+        "employeeNumber": "93483HDUIWE93",
+        "firstName": "Emma",
+        "lastName": "Van Der Vliet",
+        "emailAddress": "EmmaVliet@hotmal.com",
+        "phoneNumber": "0673493204",
+        "gender": "V",
+        "unitsPerHour": 3.00,
+        "preferenceDepartmentId": 1
+    },
+    {
+        "id": "4",
+        "employeeNumber": "038GHduejh23",
+        "firstName": "Johan",
+        "lastName": "Van Der Kamp",
+        "emailAddress": "JohanVanKamp@vanderlelie.nl",
+        "phoneNumber": "06394823938",
+        "gender": "M",
+        "unitsPerHour": 3.00,
+        "preferenceDepartmentId": 3
+    },
+    {
+        "id": "5",
+        "employeeNumber": "3948JSIWJ384",
+        "firstName": "Sophie",
+        "lastName": "Van Velzen",
+        "emailAddress": "sophievanvelzen3@ziggo.nl",
+        "phoneNumber": "0639483948",
+        "gender": "V",
+        "unitsPerHour": 3.00,
+        "preferenceDepartmentId": 2
+    }
+]

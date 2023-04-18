@@ -1,16 +1,16 @@
 export class Employee {
-    private id : number;
-    private employeeNumber : string;
-    private firstName: string;
-    private lastName: string;
-    private emailAddress: string;
-    private phoneNumber: string;
-    private gender: string;
-    private unitsPerHour: number;
-    private preferenceDepartmentId: number;
+    public id : string;
+    public employeeNumber : string;
+    public firstName: string;
+    public lastName: string;
+    public emailAddress: string;
+    public phoneNumber: string;
+    public gender: string;
+    public unitsPerHour: number;
+    public preferenceDepartmentId: number;
   
     constructor(
-        id: number,
+        id: string,
         employeeNumber: string,
         firstName: string,
         lastName: string,

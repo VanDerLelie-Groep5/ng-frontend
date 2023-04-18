@@ -4,6 +4,7 @@ import { EmployeeModule } from '../employee/employee.module';
 import { HomeModule } from '../home/home.module';
 import { SharedModule } from '../shared/shared.module';
 import { AppComponent } from './app.component';
+import { OrderModule } from '../order/order.module';
 
 @NgModule({
   declarations: [
@@ -12,6 +13,7 @@ import { AppComponent } from './app.component';
   imports: [
     AuthModule,
     EmployeeModule,
+    OrderModule,
     HomeModule,
     SharedModule
   ],

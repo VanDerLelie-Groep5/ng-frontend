@@ -1,0 +1,14 @@
+{
+    "id": "1",
+    "orderNumber": "360991543",
+    "customerGroup": "klant 2",
+    "entryDate": "2021-01-02T07:33:00.000",
+    "reference": "Blonk",
+    "space": "Erker",
+    "status": "Afgehandeld",
+    "product": "Wave, Golfband, 8,0",
+    "fabricName": "stof 1",
+    "ready": "2021-02-15T00:00:00.000",
+    "mpg": 3,
+    "units": 3.00
+}

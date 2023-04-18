@@ -6,9 +6,13 @@ import { navItems } from './navItems';
   templateUrl: './container-nav.component.html'
 })
 export class ContainerNavComponent {
-  protected navItems = navItems;
+  protected navItems = new Array();
   protected navCollapsed = false;
 
   @Input() currentRoute: string = "";
+
+  constructor() {
+    this.navItems = navItems
+  }
 
 }
