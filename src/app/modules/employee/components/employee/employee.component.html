@@ -1,0 +1,71 @@
+<app-employees></app-employees>
+
+<app-container-fixed 
+    routerUrl="/employees" 
+    [isNew]="isNewEmployee" 
+    idTitle="Medewerker" 
+    newTitle="medewerker" 
+    id="{{employee.id}}" 
+    (updateButtonClicked)=onUpdateEmployee($event)
+    (saveButtonClicked)=onSaveEmployee($event)
+    (deleteButtonClicked)=onDeleteEmployee($event)>
+
+    <form [formGroup]="employeeForm" class="w-full p-5 flex flex-col">
+        <app-text-input 
+            label="Medewerker-nummer"
+            placeholder="Voer de medewerker-nummer in"
+            type="text"
+            [required]="true"
+            formControlName="employeeNumber"
+            [parentForm]="employeeForm"
+            fieldName="employeeNumber"
+        ></app-text-input>
+        <app-text-input 
+            label="Voornaam"
+            placeholder="Voer de voornaam in"
+            type="text"
+            [required]="true"
+            formControlName="firstName"
+            [parentForm]="employeeForm" 
+            fieldName="firstName"
+        ></app-text-input>
+        <app-text-input 
+            label="Achternaam"
+            placeholder="Voer de achternaam in"
+            type="text"
+            [required]="true"
+            formControlName="lastName"
+            [parentForm]="employeeForm"
+            fieldName="lastName"
+        ></app-text-input>
+        <app-text-input 
+            label="E-mailadres"
+            placeholder="Voer het e-mailadres in"
+            type="text"
+            [required]="true"
+            formControlName="emailAddress"
+            [parentForm]="employeeForm" 
+            fieldName="emailAddress"
+        ></app-text-input>
+        <app-text-input 
+            label="Telefoonnummer"
+            placeholder="Voer het telefoonnummer in"
+            type="text"
+            [required]="true"
+            formControlName="phoneNumber"
+            [parentForm]="employeeForm" 
+            fieldName="phoneNumber"
+        ></app-text-input>
+        
+        <label class="text-sm font-medium">Geslacht</label>
+        <div class="w-full pb-5 pt-1">
+            <div class="flex justify-between w-full items-center">
+                <select formControlName="gender" class="flex-1 outline-none border-b-2">
+                    <option *ngFor="let gender of genderOptions" [ngValue]="gender">{{gender}}</option>
+                </select>
+            </div>
+        </div>
+
+    </form>
+</app-container-fixed>
+

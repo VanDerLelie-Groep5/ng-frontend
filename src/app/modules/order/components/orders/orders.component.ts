@@ -23,7 +23,7 @@ export class OrdersComponent implements OnInit {
       "Product",
       "Stofnaam",
       "Gereed",
-      "MPG",
+      "Mpg - Afdeling",
       "Units"
     ]
   }

@@ -17,5 +17,9 @@ export class EmployeeService {
     return this.http.get<Employee[]>('assets/dummydata/employees.json');
   }
 
+  getEmployee() {
+    return this.http.get<Employee>('assets/dummydata/employee.json');
+  }
+
   
 }

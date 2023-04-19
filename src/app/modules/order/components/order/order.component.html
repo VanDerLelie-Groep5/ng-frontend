@@ -1,7 +1,145 @@
-<div class="fixed top-0 right-0 h-screen bg-white/50 w-full shadow cursor-pointer"></div>
+<app-orders></app-orders>
 
-<div class="bg-white h-full fixed z-10 w-1/2 right-0 top-0 ">
-    <div class="py-2 px-5 bg-gray-100">
-        <h1 class="text-lg font-medium">Order</h1>
-    </div>
-</div>
+<app-container-fixed 
+    routerUrl="/orders" 
+    [isNew]="isNewOrder" 
+    idTitle="Order" 
+    newTitle="order" 
+    id="{{order.id}}" 
+    (updateButtonClicked)=onUpdateOrder($event)
+    (saveButtonClicked)=onSaveOrder($event)
+    (deleteButtonClicked)=onDeleteOrder($event)>
+
+    <form [formGroup]="orderForm" (ngSubmit)="onSubmit()" class="w-full p-5 flex flex-col">
+        <app-text-input 
+            label="Order-nummer"
+            placeholder="Voer het order nummer in"
+            type="text"
+            [required]="true"
+            formControlName="orderNumber"
+            [parentForm]="orderForm"
+            fieldName="orderNumber"
+        ></app-text-input>
+        <app-text-input 
+            label="Klantengroep"
+            placeholder="Voer het klantgroep in"
+            type="text"
+            [required]="true"
+            formControlName="customerGroup"
+            [parentForm]="orderForm" 
+            fieldName="customerGroup"
+        ></app-text-input>
+        <app-text-input 
+            label="Invoerdatum"
+            placeholder="Voer de invoerdatum in"
+            type="datetime-local"
+            [required]="true"
+            formControlName="entryDate"
+            [parentForm]="orderForm"
+            fieldName="entryDate"
+        ></app-text-input>
+        <app-text-input 
+            label="Referentie"
+            placeholder="Voer de referentie in"
+            type="text"
+            [required]="true"
+            formControlName="reference"
+            [parentForm]="orderForm" 
+            fieldName="reference"
+        ></app-text-input>
+        <app-text-input 
+            label="Ruimte"
+            placeholder="Voer de ruimte in"
+            type="text"
+            [required]="false"
+            formControlName="space"
+            [parentForm]="orderForm"
+            fieldName="space"
+        ></app-text-input>
+
+        <label class="text-sm font-medium">Status</label>
+        <div class="w-full pb-5 pt-1">
+            <div class="flex justify-between w-full items-center">
+                <select formControlName="status" class="flex-1 outline-none border-b-2 pb-1 cursor-pointer">
+                    <option *ngFor="let status of statusOptions" [ngValue]="status">{{status}}</option>
+                </select>
+            </div>
+        </div>
+
+        <app-text-input 
+            label="Product"
+            placeholder="Voer het product in"
+            type="text"
+            [required]="true"
+            formControlName="product"
+            [parentForm]="orderForm" 
+            fieldName="product"
+        ></app-text-input>
+        <app-text-input 
+            label="Stofnaam"
+            placeholder="Voer de stofnaam in"
+            type="text"
+            [required]="true"
+            formControlName="fabricName"
+            [parentForm]="orderForm" 
+            fieldName="fabricName"
+        ></app-text-input>
+        <app-text-input 
+            label="Gereed"
+            placeholder="Voer de gereed datum in"
+            type="datetime-local"
+            [required]="false"
+            formControlName="ready"
+            [parentForm]="orderForm"
+            fieldName="ready"
+        ></app-text-input>
+        <app-text-input 
+            label="Stofnaam"
+            placeholder="Voer de stofnaam in"
+            type="text"
+            [required]="true"
+            formControlName="fabricName"
+            [parentForm]="orderForm" 
+            fieldName="fabricName"
+        ></app-text-input>
+        <app-text-input 
+            label="Mpg - Afdeling"
+            placeholder="Voer de mpg (afdeling) in"
+            type="text"
+            [required]="false"
+            formControlName="departmentId"
+            [parentForm]="orderForm"
+            fieldName="departmentId"
+        ></app-text-input>
+
+        <app-text-input 
+            label="shift"
+            placeholder="Zoek een shift"
+            type="text"
+            [required]="true"
+            formControlName="shiftId"
+            [parentForm]="orderForm" 
+            fieldName="shiftId"
+        ></app-text-input>
+
+        <label class="text-sm font-medium">Prioriteit</label>
+        <div class="w-full pb-5 pt-1">
+            <div class="flex justify-between w-full items-center">
+                <select formControlName="priority" class="flex-1 outline-none border-b-2 pb-1 cursor-pointer">
+                    <option *ngFor="let priority of priorityOptions" [ngValue]="priority">{{priority}}</option>
+                </select>
+            </div>
+        </div>
+
+        <app-text-input 
+            label="Units"
+            placeholder="Voer de het aantal units in"
+            type="number"
+            [required]="true"
+            formControlName="units"
+            [parentForm]="orderForm"
+            fieldName="units"
+        ></app-text-input>
+    </form>
+</app-container-fixed>
+

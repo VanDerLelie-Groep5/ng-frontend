@@ -7,13 +7,15 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { TextInputComponent } from './components/text-input/text-input.component';
 import { MainButtonComponent } from './components/main-button/main-button.component';
 import { ContainerNavComponent } from './components/container-nav/container-nav.component';
+import { ContainerFixedComponent } from './components/container-fixed/container-fixed.component';
 
 
 @NgModule({
   declarations: [
     TextInputComponent,
     MainButtonComponent,
-    ContainerNavComponent
+    ContainerNavComponent,
+    ContainerFixedComponent
   ],
   imports: [
     CommonModule,
@@ -33,7 +35,8 @@ import { ContainerNavComponent } from './components/container-nav/container-nav.
     // components
     TextInputComponent,
     MainButtonComponent,
-    ContainerNavComponent
+    ContainerNavComponent,
+    ContainerFixedComponent
   ]
 })
 export class SharedModule { }

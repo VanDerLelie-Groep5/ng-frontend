@@ -9,6 +9,8 @@
     "product": "Wave, Golfband, 8,0",
     "fabricName": "stof 1",
     "ready": "2021-02-15T00:00:00.000",
-    "mpg": 3,
+    "departmentId": 3,
+    "shiftId": 2,
+    "priority": "Hoog",
     "units": 3.00
 }

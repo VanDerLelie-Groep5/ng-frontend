@@ -1,3 +1,6 @@
+import { PriorityOptions } from "./priorityEnum";
+import { StatusOptions } from "./statusEnum";
+
 export class Order {
     public id : string;
     public orderNumber: string;
@@ -5,11 +8,13 @@ export class Order {
     public entryDate: Date;
     public reference: string;
     public space: string;
-    public status: string;
+    public status: StatusOptions;
     public product: string;
     public fabricName: string;
     public ready: Date;
-    public mpg: number;
+    public departmentId: number;
+    public shiftId?: number;
+    public priority: PriorityOptions;
     public units: number;
   
     constructor(
@@ -19,11 +24,13 @@ export class Order {
         entryDate: Date,
         reference: string,
         space: string,
-        status: string,
+        status: StatusOptions,
         product: string,
         fabricName: string,
         ready: Date,
-        mpg: number,
+        departmentId: number,
+        shiftId: number,
+        priority: PriorityOptions,
         units: number)
     {
         this.id = id;
@@ -36,7 +43,9 @@ export class Order {
         this.product = product;
         this.fabricName = fabricName;
         this.ready = ready;
-        this.mpg = mpg;
+        this.departmentId = departmentId;
+        this.shiftId = shiftId;
+        this.priority = priority;
         this.units = units;
     }
 }

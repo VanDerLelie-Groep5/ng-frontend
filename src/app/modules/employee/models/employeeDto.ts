@@ -8,6 +8,8 @@ export class Employee {
     public gender: string;
     public unitsPerHour: number;
     public preferenceDepartmentId: number;
+    public createdAt: Date;
+    public updatedAt: Date;
   
     constructor(
         id: string,
@@ -18,7 +20,9 @@ export class Employee {
         phoneNumber: string,
         gender: string,
         unitsPerHour: number,
-        preferenceDepartmentId: number
+        preferenceDepartmentId: number,
+        createdAt: Date,
+        updatedAt: Date
     ) 
     {
         this.id = id;
@@ -30,5 +34,7 @@ export class Employee {
         this.gender = gender;
         this.unitsPerHour = unitsPerHour;
         this.preferenceDepartmentId = preferenceDepartmentId;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
     }
 }
