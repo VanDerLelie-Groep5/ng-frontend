@@ -13,7 +13,6 @@ export class OrdersComponent implements OnInit {
 
   constructor(private orderService : OrderService) {
     this.orders = new Array({} as Order)
-    this.setOrders()
 
     this.orderTableColNames = [
       "Id",
@@ -23,13 +22,13 @@ export class OrdersComponent implements OnInit {
       "Product",
       "Stofnaam",
       "Gereed",
-      "Mpg - Afdeling",
+      "Shift",
       "Units"
     ]
   }
 
   ngOnInit(): void {
-    console.log(this.orders)
+    this.setOrders()
   }
 
   private setOrders(): void {

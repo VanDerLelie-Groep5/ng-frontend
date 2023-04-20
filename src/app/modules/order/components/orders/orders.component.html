@@ -20,13 +20,13 @@
                     <tr *ngFor="let order of orders" [routerLink]="['/orders', order.id]"
                         class="border-b border-primary-color-gray-lighter h-11 cursor-pointer hover:bg-blue-100">
                         <td class="text-sm pl-2">{{order.id}}</td>
-                        <td class="text-sm pl-2">{{order.orderNumber}}</td>
+                        <td class="text-sm pr-7">{{order.orderNumber}}</td>
                         <td class="text-sm pr-7">{{order.customerGroup}}</td>
                         <td class="text-sm pr-7">{{order.status}}</td>
                         <td class="text-sm pr-7">{{order.product}}</td>
                         <td class="text-sm pr-7">{{order.fabricName}}</td>
                         <td class="text-sm pr-7">{{order.ready}}</td>
-                        <td class="text-sm pr-7">{{order.departmentId}}</td>
+                        <td class="text-sm pr-7">{{order.shiftId}}</td>
                         <td class="text-sm pr-7">{{order.units}}</td>
                     </tr>
                 </tbody>

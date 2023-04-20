@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Order } from '../models/orderDto';
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -11,15 +12,23 @@ export class OrderService {
   private apiUrl: string | undefined;
 
   constructor(private http: HttpClient) { 
-    this.apiUrl = environment.api_base_url + "/orders";
+    this.apiUrl = environment.api_base_url + "/Order";
   }
 
-  getOrders() {
-    return this.http.get<Order[]>('assets/dummydata/orders.json');
+  public getOrders() : Observable<Order[]> {
+    return this.http.get<Order[]>(this.apiUrl!);
   }
 
-  getOrder() {
-    return this.http.get<Order>('assets/dummydata/order.json')
-  };
+  public getOrder(id : string) : Observable<Order[]> {
+    return this.http.get<Order[]>(this.apiUrl! + `/${id}`)
+  }
+
+  public postOrder(order : Order) : Observable<Object> {
+    return this.http.post<Object>(this.apiUrl!, order);
+  }
+
+  public updateOrder(order : Order) : Observable<Object> {
+    return this.http.put<Object>(this.apiUrl!, order);
+  }
 }
 

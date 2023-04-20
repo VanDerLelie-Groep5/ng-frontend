@@ -20,7 +20,7 @@
                     <tr *ngFor="let employee of employees" [routerLink]="['/employees', employee.id]"
                         class="border-b border-primary-color-gray-lighter h-11 cursor-pointer hover:bg-blue-100">
                         <td class="text-sm pl-2">{{employee.id}}</td>
-                        <td class="text-sm pl-2">{{employee.employeeNumber}}</td>
+                        <td class="text-sm pr-7">{{employee.employeeNumber}}</td>
                         <td class="text-sm pr-7">{{employee.firstName}}</td>
                         <td class="text-sm pr-7">{{employee.lastName}}</td>
                         <td class="text-sm pr-7">{{employee.emailAddress}}</td>

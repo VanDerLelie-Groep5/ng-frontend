@@ -1,5 +1,7 @@
+import { EmployeeShift } from "../../shift/models/employeeShiftDto";
+
 export class Employee {
-    public id : string;
+    public id : number;
     public employeeNumber : string;
     public firstName: string;
     public lastName: string;
@@ -8,11 +10,12 @@ export class Employee {
     public gender: string;
     public unitsPerHour: number;
     public preferenceDepartmentId: number;
+    public employeeShifts: EmployeeShift[];
     public createdAt: Date;
     public updatedAt: Date;
   
     constructor(
-        id: string,
+        id: number,
         employeeNumber: string,
         firstName: string,
         lastName: string,
@@ -21,6 +24,7 @@ export class Employee {
         gender: string,
         unitsPerHour: number,
         preferenceDepartmentId: number,
+        employeeShifts: EmployeeShift[],
         createdAt: Date,
         updatedAt: Date
     ) 
@@ -34,6 +38,7 @@ export class Employee {
         this.gender = gender;
         this.unitsPerHour = unitsPerHour;
         this.preferenceDepartmentId = preferenceDepartmentId;
+        this.employeeShifts = employeeShifts;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }

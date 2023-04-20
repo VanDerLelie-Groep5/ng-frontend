@@ -10,7 +10,7 @@
     (saveButtonClicked)=onSaveOrder($event)
     (deleteButtonClicked)=onDeleteOrder($event)>
 
-    <form [formGroup]="orderForm" (ngSubmit)="onSubmit()" class="w-full p-5 flex flex-col">
+    <form [formGroup]="orderForm" class="w-full p-5 flex flex-col">
         <app-text-input 
             label="Order-nummer"
             placeholder="Voer het order nummer in"
@@ -102,25 +102,6 @@
             [parentForm]="orderForm" 
             fieldName="fabricName"
         ></app-text-input>
-        <app-text-input 
-            label="Mpg - Afdeling"
-            placeholder="Voer de mpg (afdeling) in"
-            type="text"
-            [required]="false"
-            formControlName="departmentId"
-            [parentForm]="orderForm"
-            fieldName="departmentId"
-        ></app-text-input>
-
-        <app-text-input 
-            label="shift"
-            placeholder="Zoek een shift"
-            type="text"
-            [required]="true"
-            formControlName="shiftId"
-            [parentForm]="orderForm" 
-            fieldName="shiftId"
-        ></app-text-input>
 
         <label class="text-sm font-medium">Prioriteit</label>
         <div class="w-full pb-5 pt-1">
@@ -140,6 +121,45 @@
             [parentForm]="orderForm"
             fieldName="units"
         ></app-text-input>
+
+        <app-text-input 
+            class="hidden"
+            label="shift"
+            placeholder="Zoek een shift"
+            type="text"
+            [required]="true"
+            formControlName="shiftId"
+            [parentForm]="orderForm" 
+            fieldName="shiftId"
+        ></app-text-input>
+
+        <label *ngIf="order.shift" class="text-sm font-medium">shift</label>
+        <!-- <div class="w-full pb-5 pt-1">
+            <div class="flex justify-between w-full items-center">
+                {{order.shiftId}}
+            </div>
+        </div> -->
+
+        <table *ngIf="order.shift" class="w-full pb-5 pt-1">
+            <thead>
+                <tr>
+                    <th *ngFor="let colName of shiftTableColumns; first as isFirst;" 
+                        class="text-xs text-left pr-7 border-b border-primary-color-gray-light py-2"
+                        [ngClass]="{'pl-2': isFirst}">
+                            {{colName}}
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr [routerLink]="['/shifts', order.shiftId]"
+                    class="border-b border-primary-color-gray-lighter h-11 cursor-pointer hover:bg-blue-100">
+                    <td class="text-sm pl-2">{{order.shiftId}}</td>
+                    <td class="text-sm pr-7">{{order.shift.startDateTime}}</td>
+                    <td class="text-sm pr-7">{{order.shift.endDateTime}}</td>
+                    <td class="text-sm pr-7">{{order.shift.departmentId}}</td>
+                </tr>
+            </tbody>
+        </table>
     </form>
 </app-container-fixed>
 

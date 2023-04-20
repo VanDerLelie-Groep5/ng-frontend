@@ -17,60 +17,67 @@ export class OrderComponent implements OnInit {
   public isNewOrder: boolean;
 
   public statusOptions : StatusOptions[] = [StatusOptions.FINISHED, StatusOptions.UNFINISHED]
-  public priorityOptions : PriorityOptions[] = [PriorityOptions.LOW, PriorityOptions.NORMAL, PriorityOptions.LOW]
+  public priorityOptions : PriorityOptions[] = [PriorityOptions.HIGH, PriorityOptions.NORMAL, PriorityOptions.LOW]
+
+  public shiftTableColumns : string[] = [
+    "Id",
+    "Startdatum",
+    "Einddatum",
+    "Mpg - Afdeling"
+  ]
 
   constructor(private orderService : OrderService, private fb: FormBuilder, private route: ActivatedRoute) {
     this.order = {} as Order
     this.isNewOrder = false;
     
     this.orderForm = this.fb.group({
-      orderNumber: new FormControl('', [Validators.required]),
-      customerGroup: new FormControl('', [Validators.required]),
-      entryDate: new FormControl('', [Validators.required]),
-      reference: new FormControl('', [Validators.required]),
-      space: new FormControl('', [Validators.required]),
+      orderNumber: new FormControl(null, [Validators.required]),
+      customerGroup: new FormControl(null, [Validators.required]),
+      entryDate: new FormControl(null, [Validators.required]),
+      reference: new FormControl(null, [Validators.required]),
+      space: new FormControl(null, [Validators.required]),
       status: new FormControl(StatusOptions.UNFINISHED, [Validators.required]),
-      product: new FormControl('', [Validators.required]),
-      fabricName: new FormControl('', [Validators.required]),
-      ready: new FormControl('', [Validators.required]),
-      departmentId: new FormControl('', [Validators.required]),
-      shiftId: new FormControl('', [Validators.required]),
+      product: new FormControl(null, [Validators.required]),
+      fabricName: new FormControl(null, [Validators.required]),
+      ready: new FormControl(null, [Validators.required]),
+      shiftId: new FormControl(null, [Validators.required]),
       priority: new FormControl(PriorityOptions.NORMAL, [Validators.required]),
-      units: new FormControl('', [Validators.required])
+      units: new FormControl(null, [Validators.required])
     })  
   }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       if (params['id']) {
-        this.setOrder()
+        this.setOrder(params['id'])
       } else {
         this.isNewOrder = true
       }
     });
+
+    
   }
 
-  private setOrder(): void {
-    this.orderService.getOrder()
-      .subscribe((data: Order) => {
-        this.order = data;
-        this.orderForm.patchValue(data)
+  private setOrder(id : string): void {
+    this.orderService.getOrder(id)
+      .subscribe((data: Order[]) => {
+        console.log(data)
+        this.order = data[0];
+        this.orderForm.patchValue(data[0])
       });
   }
 
-  onUpdateOrder(eventData: boolean) {
+  public onUpdateOrder(eventData: boolean) : void {
+    this.orderService.updateOrder({id: this.order.id, ...this.orderForm.value}).subscribe(data => console.log(data));
+  }
+
+  public onSaveOrder(eventData: boolean) : void {
+    this.orderService.postOrder(this.orderForm.value)
+  }
+
+  public onDeleteOrder(eventData: boolean) : void {
     console.log(this.orderForm.value)
   }
 
-  onSaveOrder(eventData: boolean) {
-    console.log(eventData)
-  }
 
-  onDeleteOrder(eventData: boolean) {
-    console.log(eventData)
-  }
-
-  protected onSubmit() {
-    console.log(this.orderForm.value);
-  }
 }

@@ -1,11 +1,11 @@
 {
-    "id": "1",
+    "id": 1,
     "employeeNumber": "23IWBDU0283B",
     "firstName": "Ilias",
     "lastName": "Boujibar",
     "emailAddress": "iliasbouji@gmail.com",
     "phoneNumber": "0619989285",
-    "gender": "Man",
+    "gender": "M",
     "unitsPerHour": 3.00,
     "preferenceDepartmentId": 2
 }

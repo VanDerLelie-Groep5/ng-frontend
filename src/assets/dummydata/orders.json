@@ -11,6 +11,7 @@
         "fabricName": "stof 1",
         "ready": "2021-02-15T00:00:00.000",
         "departmentId": 3,
+        "shift": null,
         "shiftId": 2,
         "priority": "Hoog",
         "units": 3.00

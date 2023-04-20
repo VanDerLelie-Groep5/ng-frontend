@@ -12,6 +12,7 @@ import { Gender } from '../../models/genderEnum';
 export class EmployeeComponent implements OnInit {
 
   public employee : Employee;
+
   protected employeeForm: FormGroup;
   public isNewEmployee: boolean;
 
@@ -22,44 +23,45 @@ export class EmployeeComponent implements OnInit {
     this.isNewEmployee = false;
     
     this.employeeForm = this.fb.group({
-      employeeNumber: new FormControl('', [Validators.required]),
-      firstName: new FormControl('', [Validators.required]),
-      lastName: new FormControl('', [Validators.required]),
-      emailAddress: new FormControl('', [Validators.required]),
-      phoneNumber: new FormControl('', [Validators.required]),
-      gender: new FormControl('', [Validators.required]),
-      unitsPerHour: new FormControl('', [Validators.required]),
-      preferenceDepartmentId: new FormControl('', [Validators.required])
+      employeeNumber: new FormControl(null, [Validators.required]),
+      firstName: new FormControl(null, [Validators.required]),
+      lastName: new FormControl(null, [Validators.required]),
+      emailAddress: new FormControl(null, [Validators.required]),
+      phoneNumber: new FormControl(null, [Validators.required]),
+      gender: new FormControl(null, [Validators.required]),
+      unitsPerHour: new FormControl(null, [Validators.required]),
+      employeeShifts: new FormControl(null, [Validators.required]),
+      preferenceDepartmentId: new FormControl(null, [Validators.required])
     })  
   }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       if (params['id']) {
-        this.setEmployee()
+        this.setEmployee(params['id'])
       } else {
         this.isNewEmployee = true
       }
     });
   }
 
-  private setEmployee(): void {
-    this.employeeService.getEmployee()
+  private setEmployee(id: string): void {
+    this.employeeService.getEmployee(id)
       .subscribe((data: Employee) => {
         this.employee = data;
         this.employeeForm.patchValue(data)
       });
   }
 
-  onUpdateEmployee(eventData: boolean) {
-    console.log(this.employeeForm.value)
+  public onUpdateEmployee(eventData: boolean) : void {
+    this.employeeService.updateEmployee({ id: this.employee.id, ...this.employeeForm.value}).subscribe(data => console.log(data));
   }
 
-  onSaveEmployee(eventData: boolean) {
-    console.log(eventData)
+  public onSaveEmployee(eventData: boolean) : void {
+    this.employeeService.postEmployee(this.employeeForm.value)
   }
 
-  onDeleteEmployee(eventData: boolean) {
+  public onDeleteEmployee(eventData: boolean) : void {
     console.log(eventData)
   }
 
