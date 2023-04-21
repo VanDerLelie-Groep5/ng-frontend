@@ -9,7 +9,7 @@ export class ContainerFixedComponent {
   @Input() routerUrl: string = '';
   @Input() idTitle: string = '';
   @Input() newTitle: string = '';
-  @Input() id?: string = '';
+  @Input() id?: number;
   @Input() isNew: boolean = false;
 
   @Output() updateButtonClicked = new EventEmitter<boolean>();

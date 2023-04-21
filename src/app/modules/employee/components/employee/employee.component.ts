@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Employee } from '../../models/employeeDto';
 import { EmployeeService } from '../../services/employee.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Gender } from '../../models/genderEnum';
 
 @Component({
@@ -18,7 +18,13 @@ export class EmployeeComponent implements OnInit {
 
   public genderOptions : Gender[] = [Gender.MALE, Gender.FEMALE]
 
-  constructor(private employeeService : EmployeeService, private fb: FormBuilder, private route: ActivatedRoute) {
+  constructor(
+    private employeeService : EmployeeService, 
+    private fb: FormBuilder, 
+    private route: ActivatedRoute,
+    private router: Router) 
+    {
+
     this.employee = {} as Employee;
     this.isNewEmployee = false;
     
@@ -54,11 +60,16 @@ export class EmployeeComponent implements OnInit {
   }
 
   public onUpdateEmployee(eventData: boolean) : void {
-    this.employeeService.updateEmployee({ id: this.employee.id, ...this.employeeForm.value}).subscribe(data => console.log(data));
+    this.employeeService.updateEmployee({ id: this.employee.id, ...this.employeeForm.value}).subscribe(data => {
+      this.router.navigate(['/', 'employees'])
+    });
   }
 
   public onSaveEmployee(eventData: boolean) : void {
-    this.employeeService.postEmployee(this.employeeForm.value)
+    this.employeeService.postEmployee(this.employeeForm.value).subscribe(data => {
+      console.log(data)
+      this.router.navigate(['/', 'employees'])
+    });
   }
 
   public onDeleteEmployee(eventData: boolean) : void {

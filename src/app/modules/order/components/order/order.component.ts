@@ -3,7 +3,7 @@ import { OrderService } from '../../services/order.service';
 import { Order } from '../../models/orderDto';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { StatusOptions } from '../../models/statusEnum';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PriorityOptions } from '../../models/priorityEnum';
 
 @Component({
@@ -26,7 +26,13 @@ export class OrderComponent implements OnInit {
     "Mpg - Afdeling"
   ]
 
-  constructor(private orderService : OrderService, private fb: FormBuilder, private route: ActivatedRoute) {
+  constructor(
+    private orderService : OrderService, 
+    private fb: FormBuilder, 
+    private route: ActivatedRoute,
+    private router: Router) 
+    {
+
     this.order = {} as Order
     this.isNewOrder = false;
     
@@ -54,8 +60,6 @@ export class OrderComponent implements OnInit {
         this.isNewOrder = true
       }
     });
-
-    
   }
 
   private setOrder(id : string): void {
@@ -68,11 +72,15 @@ export class OrderComponent implements OnInit {
   }
 
   public onUpdateOrder(eventData: boolean) : void {
-    this.orderService.updateOrder({id: this.order.id, ...this.orderForm.value}).subscribe(data => console.log(data));
+    this.orderService.updateOrder({id: this.order.id, ...this.orderForm.value}).subscribe(data => {
+      this.router.navigate(['/', 'orders'])
+    });
   }
 
   public onSaveOrder(eventData: boolean) : void {
-    this.orderService.postOrder(this.orderForm.value)
+    this.orderService.postOrder(this.orderForm.value).subscribe(data => {
+      this.router.navigate(['/', 'orders'])
+    });
   }
 
   public onDeleteOrder(eventData: boolean) : void {

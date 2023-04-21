@@ -5,7 +5,7 @@
     [isNew]="isNewEmployee" 
     idTitle="Medewerker" 
     newTitle="medewerker" 
-    id="{{employee.id}}" 
+    [id]="employee.id" 
     (updateButtonClicked)=onUpdateEmployee($event)
     (saveButtonClicked)=onSaveEmployee($event)
     (deleteButtonClicked)=onDeleteEmployee($event)>
@@ -65,6 +65,25 @@
                 </select>
             </div>
         </div>
+
+        <app-text-input 
+            label="Units / Ph"
+            placeholder="Voer het aantlal Units/Ph in"
+            type="number"
+            [required]="true"
+            formControlName="unitsPerHour"
+            [parentForm]="employeeForm" 
+            fieldName="unitsPerHour"
+        ></app-text-input>
+        <app-text-input 
+            label="Voorkeur Mpg - Afdeling"
+            placeholder="Voer het mpg voorkeur in"
+            type="text"
+            [required]="true"
+            formControlName="preferenceDepartmentId"
+            [parentForm]="employeeForm" 
+            fieldName="preferenceDepartmentId"
+        ></app-text-input>
 
     </form>
 </app-container-fixed>

@@ -8,6 +8,8 @@ import { OrderComponent } from '../order/components/order/order.component';
 import { EmployeeComponent } from '../employee/components/employee/employee.component';
 import { DepartmentsComponent } from '../department/components/departments/departments.component';
 import { DepartmentComponent } from '../department/components/department/department.component';
+import { ShiftsComponent } from '../shift/components/shifts/shifts.component';
+import { ShiftComponent } from '../shift/components/shift/shift.component';
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
@@ -20,7 +22,10 @@ const routes: Routes = [
   { path: "orders/:id", component: OrderComponent },
   { path: "departments", component: DepartmentsComponent },
   { path: "departments/new", component: DepartmentComponent },
-  { path: "departments/:id", component: DepartmentComponent }
+  { path: "departments/:id", component: DepartmentComponent },
+  { path: "shifts", component: ShiftsComponent },
+  { path: "shifts/new", component: ShiftComponent },
+  { path: "shifts/:id", component: ShiftComponent }
   
 ];
 

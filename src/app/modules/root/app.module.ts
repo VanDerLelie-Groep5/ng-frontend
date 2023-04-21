@@ -6,6 +6,7 @@ import { SharedModule } from '../shared/shared.module';
 import { AppComponent } from './app.component';
 import { OrderModule } from '../order/order.module';
 import { DepartmentModule } from '../department/department.module';
+import { ShiftModule } from '../shift/shift.module';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { DepartmentModule } from '../department/department.module';
     EmployeeModule,
     OrderModule,
     DepartmentModule,
+    ShiftModule,
     HomeModule,
     SharedModule
   ],

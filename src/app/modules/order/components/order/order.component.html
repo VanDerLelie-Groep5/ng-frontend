@@ -5,7 +5,7 @@
     [isNew]="isNewOrder" 
     idTitle="Order" 
     newTitle="order" 
-    id="{{order.id}}" 
+    [id]="order.id" 
     (updateButtonClicked)=onUpdateOrder($event)
     (saveButtonClicked)=onSaveOrder($event)
     (deleteButtonClicked)=onDeleteOrder($event)>
@@ -134,11 +134,6 @@
         ></app-text-input>
 
         <label *ngIf="order.shift" class="text-sm font-medium">shift</label>
-        <!-- <div class="w-full pb-5 pt-1">
-            <div class="flex justify-between w-full items-center">
-                {{order.shiftId}}
-            </div>
-        </div> -->
 
         <table *ngIf="order.shift" class="w-full pb-5 pt-1">
             <thead>

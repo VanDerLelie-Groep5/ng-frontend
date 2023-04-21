@@ -1,1 +1,43 @@
-<p>shift works!</p>
+<app-shifts></app-shifts>
+
+<app-container-fixed 
+    routerUrl="/shifts" 
+    [isNew]="isNewShift" 
+    idTitle="Shift" 
+    newTitle="shift" 
+    [id]="shift.id" 
+    (updateButtonClicked)=onUpdateShift($event)
+    (saveButtonClicked)=onSaveShift($event)
+    (deleteButtonClicked)=onDeleteShift($event)>
+
+    <form [formGroup]="shiftForm" class="w-full p-5 flex flex-col">
+        <app-text-input 
+            label="Starttijd"
+            placeholder="Voer de starttijd in"
+            type="datetime-local"
+            [required]="true"
+            formControlName="startDateTIme"
+            [parentForm]="shiftForm"
+            fieldName="startDateTIme"
+        ></app-text-input>
+        <app-text-input 
+            label="Eindtijd"
+            placeholder="Voer de eindtijd in"
+            type="datetime-local"
+            [required]="true"
+            formControlName="endDateTIme"
+            [parentForm]="shiftForm"
+            fieldName="endDateTIme"
+        ></app-text-input>
+        <app-text-input 
+            label="Mpg - Afdeling"
+            placeholder="Voer de afdeling in"
+            type="text"
+            [required]="true"
+            formControlName="departmentId"
+            [parentForm]="shiftForm"
+            fieldName="departmentId"
+        ></app-text-input>
+    </form>
+</app-container-fixed>
+
